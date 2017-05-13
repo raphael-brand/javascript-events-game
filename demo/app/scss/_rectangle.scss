@@ -1,0 +1,34 @@
+@import '_colors';
+
+.rectangle-outer {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+}
+/*.rectangle-inner {
+  margin: 65px auto;
+  margin-left: 0px;
+  width: calc(100% - 65px);
+  background-color: $bg-color1;
+  height: calc(80% - 65px);
+  position: relative;
+}
+*/
+.playfield {
+  postion: relative;
+}
+.ninth {
+  width: 33.3%;
+  height: 33.3%;
+  position: relative;
+  display: inline-block;
+  background-color: $bg-color1;
+}
+.draggable.one,
+.draggable.two {
+  background-color: #efe;
+  width: 30%;
+  height: 30%;
+  position: relative;
+}

@@ -5,8 +5,22 @@ html
         link(href='/css/main.css', rel='stylesheet')
         script(type='text/javascript', data-main='js/main', src='js/require.js')
     body
-        h1 Gulp, SASS + Pug Templates
-        p Your gulpfile provides some context for Pug:
-        ul
-          each val, index in locals
-            li= index + ': ' + val
+        .container
+          .row
+            h1.col-md-12.col-lg-12.column This is a test
+              
+          .row
+            .playfield.col-md-8.col-lg-8.column
+              .rectangle-outer
+
+                for val in [1,2,3,4,5,6,7,8,9]
+                  .ninth=''
+              
+              .rectangle-outer
+                .draggable.one(draggable='true') Drag me
+                .draggable.two(draggable='true', onmousedown='dragRect(event)', ondrop='stopDragRect(event)') Or me
+
+            .col-md-4.col-lg-4.column Test 2
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas sapiente tempore nisi nemo nulla optio alias corporis libero non minus, dolorem expedita voluptatibus natus illo suscipit ab velit mollitia voluptates.
+              p Modi dolores quam ad inventore, consequuntur qui veniam totam! Sed totam minus sunt quos quaerat, distinctio aut nostrum fugiat sapiente ipsam voluptatum natus, maiores mollitia eum, neque itaque tenetur voluptate!
+              p Nihil libero labore aliquid, debitis amet officiis unde ab obcaecati omnis, beatae aperiam dignissimos non voluptatem sed corporis tenetur quasi iure esse quis. Numquam dignissimos cupiditate velit, id, praesentium accusantium!
