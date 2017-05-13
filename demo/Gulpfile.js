@@ -4,6 +4,7 @@ var reload      = browserSync.reload;
 var bsConfig    = require('./bs-config.json');
 var sass        = require('gulp-sass');
 var pug         = require('gulp-pug');
+var uglifyjs      = require('gulp-uglifyjs');
 
 /**
  * Compile pug files into HTML
@@ -37,13 +38,18 @@ gulp.task('sass', function () {
         .pipe(reload({stream: true}));
 });
 
+gulp.task('js', function() {
+  return gulp.src(['bower_components/requirejs/require.js'])
+         .pipe(uglifyjs())
+         .pipe(gulp.dest('./dist/js'))
+         .pipe(reload({stream: true}))
+});
 /**
  * Serve and watch the scss/pug files for changes
  */
 gulp.task('default', ['sass', 'templates'], function () {
 
     browserSync(bsConfig);
-
 
     gulp.watch('./app/scss/*.scss', ['sass']);
     gulp.watch('./app/*.pug',       ['pug-watch']);

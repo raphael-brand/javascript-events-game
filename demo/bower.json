@@ -1,0 +1,29 @@
+{
+  "name": "demo - gulp.pug",
+  "description": "collision test Gulp, SASS + Pug Templates",
+  "main": "gulpfile.js",
+  "authors": [
+    "Raphael Brand <info@raphaelbrand.de>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "demo",
+    "collision",
+    "test"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-no-js": "^3.0.3"
+  },
+  "devDependencies": {
+    "requirejs": "^2.3.3"
+  }
+}
