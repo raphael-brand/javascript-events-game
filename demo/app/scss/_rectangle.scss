@@ -2,7 +2,7 @@
 
 .rectangle-outer {
   width: 100%;
-  height: 200px;
+  height: 100%;
   position: absolute;
   top: 0;
 }
@@ -17,6 +17,7 @@
 */
 .playfield {
   postion: relative;
+  height: 650px;
 }
 .ninth {
   width: 33.3%;

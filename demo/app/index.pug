@@ -17,8 +17,8 @@ html
                   .ninth=''
               
               .rectangle-outer
-                .draggable.one(draggable='true') Drag me
-                .draggable.two(draggable='true', onmousedown='dragRect(event)', ondrop='stopDragRect(event)') Or me
+                .draggable.one(draggable='true', ondragstart='dragRect(event)') Drag me
+                .draggable.two(draggable='true', ondrag='stopDragRect(event)', ondragover='stopDragRect(event)') Or me
 
             .col-md-4.col-lg-4.column Test 2
               p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas sapiente tempore nisi nemo nulla optio alias corporis libero non minus, dolorem expedita voluptatibus natus illo suscipit ab velit mollitia voluptates.
