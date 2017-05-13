@@ -5,6 +5,7 @@ var bsConfig    = require('./bs-config.json');
 var sass        = require('gulp-sass');
 var pug         = require('gulp-pug');
 var uglifyjs      = require('gulp-uglifyjs');
+var concat    = require('gulp-concat');
 
 /**
  * Compile pug files into HTML
@@ -39,8 +40,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function() {
-  return gulp.src(['bower_components/requirejs/require.js'])
-         .pipe(uglifyjs())
+  // return gulp.src(['bower_components/requirejs/require.js'])
+  //        .pipe(uglifyjs())
+  return gulp.src([
+            'app/js/test-module.js',
+            'app/js/main.js']
+          )
+          .pipe(concat('main.js'))
          .pipe(gulp.dest('./dist/js'))
          .pipe(reload({stream: true}))
 });
@@ -50,7 +56,7 @@ gulp.task('js', function() {
 gulp.task('default', ['sass', 'templates'], function () {
 
     browserSync(bsConfig);
-
+    gulp.watch('./app/js/*.js', ['js']);
     gulp.watch('./app/scss/*.scss', ['sass']);
     gulp.watch('./app/*.pug',       ['pug-watch']);
 });
