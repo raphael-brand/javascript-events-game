@@ -1,5 +1,9 @@
-index.*
+index.html
 mouse-events*
 style.css
 .gitignore
-/node_modules/
+demo/node_modules
+demo/bower_components
+demo/dist/
+!demo
+node_modules/

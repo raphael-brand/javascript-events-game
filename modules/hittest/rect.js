@@ -11,7 +11,11 @@ var Rectangle = function (width, height, x, y) {
   }
 
   this.points = points;
-
+  this.a = points.a;
+  this.b = points.b;
+  this.c = points.c;
+  this.d = points.d;
+  
   this.getRect = function () {
     return this.points;
   }
