@@ -13,13 +13,24 @@ define('rectangle', function() {
     }
 
     this.points = points;
-    this.a = points.a;
-    this.b = points.b;
-    this.c = points.c;
-    this.d = points.d;
+    this.width = width;
+    this.height = height;
+
+    this.setPoints = function(pts) {
+      this.points = new Object(pts);
+      this.a = pts.a;
+      this.b = pts.b;
+      this.c = pts.c;
+      this.d = pts.d;
+    }
+
+    this.setPoints(points);
     
     this.getRect = function () {
-      return this.points;
+      var points = this.points;
+      return {
+        points, width, height
+      };
     }
   }
 

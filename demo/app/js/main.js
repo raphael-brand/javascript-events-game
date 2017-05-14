@@ -6,6 +6,13 @@ function hl_color(event) {
 function rm_color(event) {
   event.target.classList.remove('highlight');
 }
+
+// declare Rectangle instance variables
+// loaded from test-module 'Rectangle'
+var 
+    r1, // target div
+    r2; // draggable div
+
 function dragRect(event) {
 
 
@@ -19,7 +26,7 @@ function dragRect(event) {
     x = draggableDiv.offsetLeft;
     y = draggableDiv.offsetTop;
 
-    var r2 = new geom.Rectangle(draggableDiv.offsetWidth, draggableDiv.offsetHeight, x, y);
+    r2 = new geom.Rectangle(draggableDiv.offsetWidth, draggableDiv.offsetHeight, x, y);
     console.log(r2);
     console.groupEnd();
   });
@@ -27,8 +34,33 @@ function dragRect(event) {
   
 }
 
-function stopDragRect(event) {
+function onEnterTarget(event) {
   rectDrags = false;
+  console.log(event);
+}
+
+function onDrag(e) {
+
+    var pts = {
+      a: [e.screenX, e.screenY],
+      b: [e.screenX + r2.width, e.screenY],
+      c: [e.screenX, e.screenY + r2.height],
+      d: [e.screenX + r2.width, e.screenY + r2.height]
+    }
+
+    r2.setPoints(pts);
+}
+
+function getRectangle(e) {
+  if(rectDrags) {
+    e.preventDefault();
+
+    onDrag(e); // register new position a last time
+    console.dir(r2.getRect())
+    // check which corner of the draggable is within the droppable
+
+    rectDrags = false;
+  }
 }
 
 function get9Grid() {
@@ -84,11 +116,12 @@ function moveRect() {
 
 window.addEventListener('load', function() {
   
-  getDragLayer().addEventListener('mousemove', function(event) {
+  /*getDragLayer().addEventListener('mousemove', function(event) {
       moveRect();
   });
-
-  switchMode(getDragLayer(), "toggleOpacity", false);
+  */
+  var dragLayer = getDragLayer();
+  switchMode(dragLayer, "toggleOpacity", false);
 
   var ninth = get9Grid();
   for(var el in ninth) {
@@ -104,8 +137,17 @@ window.addEventListener('load', function() {
     x = targetDiv.offsetLeft;
     y = targetDiv.offsetTop;
 
-    var r1 = new geom.Rectangle(targetDiv.offsetWidth, targetDiv.offsetHeight, x, y);
+    r1 = new geom.Rectangle(targetDiv.offsetWidth, targetDiv.offsetHeight, x, y);
     console.group('Rectangle Instances:');
     console.dir(r1);
+    // adding copy of targetDiv
+    // to the drop zone layer 
+    var copyTarget = document.querySelector('.centerMiddle', get9Grid()).cloneNode();
+    copyTarget.style.top = r1.a[1] + 'px';
+    copyTarget.style.left = r1.a[0] + 'px';
+    copyTarget.style.position = 'absolute';
+    //copyTarget.classList.add()
+    dragLayer.appendChild(copyTarget);
+    //
   });
 })
