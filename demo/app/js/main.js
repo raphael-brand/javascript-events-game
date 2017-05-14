@@ -7,8 +7,23 @@ function rm_color(event) {
   event.target.classList.remove('highlight');
 }
 function dragRect(event) {
+
+
   rectDrags = true;
   target = event.target;
+
+  require(['test-module'], function(geom) {
+    var draggableDiv, x, y;
+    draggableDiv = target;
+
+    x = draggableDiv.offsetLeft;
+    y = draggableDiv.offsetTop;
+
+    var r2 = new geom.Rectangle(draggableDiv.offsetWidth, draggableDiv.offsetHeight, x, y);
+    console.log(r2);
+    console.groupEnd();
+  });
+
   
 }
 
@@ -82,7 +97,15 @@ window.addEventListener('load', function() {
   }
 
   require(['test-module'], function(geom) {
-    var r1 = new geom.Rectangle(20,20);
-    console.log(r1);
+    var x, y, targetDiv;
+    
+    targetDiv = document.querySelector('.centerMiddle', get9Grid());
+    
+    x = targetDiv.offsetLeft;
+    y = targetDiv.offsetTop;
+
+    var r1 = new geom.Rectangle(targetDiv.offsetWidth, targetDiv.offsetHeight, x, y);
+    console.group('Rectangle Instances:');
+    console.dir(r1);
   });
 })
