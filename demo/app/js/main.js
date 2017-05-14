@@ -9,10 +9,9 @@ function rm_color(event) {
 function dragRect(event) {
   rectDrags = true;
   target = event.target;
-  require(['test-module'], function(test) {
-    console.log(test.test());
-  });
+  
 }
+
 function stopDragRect(event) {
   rectDrags = false;
 }
@@ -81,4 +80,9 @@ window.addEventListener('load', function() {
     ninth[el].addEventListener('mousemove', hl_color);
     ninth[el].addEventListener('mouseout', rm_color);
   }
+
+  require(['test-module'], function(geom) {
+    var r1 = new geom.Rectangle(20,20);
+    console.log(r1);
+  });
 })
