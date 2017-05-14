@@ -33,7 +33,9 @@ gulp.task('pug-watch', ['templates'], reload);
  * Sass task for live injecting into all browsers
  */
 gulp.task('sass', function () {
-    return gulp.src(['bower_components/bootstrap-sass-no-js/vendor/assets/stylesheets/bootstrap.scss','./app/scss/*.scss'])
+    return gulp.src([
+      //'bower_components/bootstrap-sass-no-js/vendor/assets/stylesheets/bootstrap.scss',
+      './app/scss/*.scss'])
         .pipe(sass()).on('error', sass.logError)
         .pipe(gulp.dest('./dist/css'))
         .pipe(reload({stream: true}));
