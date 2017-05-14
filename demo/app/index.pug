@@ -18,10 +18,16 @@ html
                     .ninth=''
                   else
                     .ninth.centerMiddle=''
-              
+
+
               .rectangle-outer
                 .draggable.one Drag me
-                .draggable.two(draggable='true', ondragstart='dragRect(event)', ondragover='stopDragRect(event)') Or me
+                .draggable.two(
+                  draggable='true',
+                  ondragstart='dragRect(event)',
+                  ondrag='onDrag(event)'
+                  ondragend='getRectangle(event)'
+                ) Or me
 
             .col-md-4.col-lg-4.column Test 2
               .input-group
