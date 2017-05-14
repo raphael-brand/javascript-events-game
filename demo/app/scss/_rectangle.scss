@@ -6,8 +6,18 @@
   position: absolute;
   top: 0;
 }
+.rectangle-outer:last-child {
+  opacity: 0;
+  display: none;
+  transition: opacity 300ms;
+}
 div.highlight, div.centerMiddle {
   background-color: $hl-color1;
+  border: 5px solid transparent;
+  transition: border-color 500ms;
+}
+div.centerMiddle:hover {
+  border: 5px solid #fff;
 }
 /*.rectangle-inner {
   margin: 65px auto;
@@ -28,6 +38,7 @@ div.highlight, div.centerMiddle {
   position: relative;
   display: inline-block;
   background-color: $bg-color1;
+  border: 5px solid transparent;
 }
 .draggable.one,
 .draggable.two {
