@@ -19,11 +19,11 @@ html
                   else
                     .ninth.centerMiddle=''
               
-              .rectangle-outer(style='opacity:0')
+              .rectangle-outer(style='display:none; opacity:0;')
                 .draggable.one Drag me
                 .draggable.two(draggable='true', ondrag='dragRect(event)', ondragover='stopDragRect(event)') Or me
 
             .col-md-4.col-lg-4.column Test 2
               .input-group
                 label(for='showDragLayer') Show Drag Layer
-                input(type='checkbox', id='showDragLayer', onchange='switchMode("drag", this.checked)')
+                input(type='checkbox', id='showDragLayer', onchange='switchMode("toggleOpacity", this.checked)')

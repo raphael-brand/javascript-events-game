@@ -19,13 +19,29 @@ function stopDragRect(event) {
 
 function switchMode(mode, checked) {
   switch(mode) {
-    case "drag":
-      var displayMode;
-      checked ? displayMode = 1 : displayMode = 0;
-      Array.from(document.querySelectorAll('.rectangle-outer'))[1].style.opacity = displayMode;
+    case "toggleOpacity":
+      var changeset = {
+        display: !checked ? 'none' : 'block',
+        opacity: !checked ? 0 : 1,
+        delayedProperty: !checked ? 'display' : 'opacity',
+        property: checked ? 'display' : 'opacity'
+      };
+        
+      var el = Array.from(document.querySelectorAll('.rectangle-outer'))[1];
+      var changeMode = (isChecked) => {
+        el.style[changeset.delayedProperty] = changeset[changeset.delayedProperty];
+      }
+
+      el.style[changeset.property] = changeset[changeset.property];
+
+      if(!checked)
+        setTimeout(changeMode, 500, checked)
+      else
+        setTimeout(changeMode, 0, checked)
+
     break;
+    }
   }
-}
 
 function moveRect() {
   if(rectDrags)
