@@ -17,7 +17,20 @@ function stopDragRect(event) {
   rectDrags = false;
 }
 
-function switchMode(mode, checked) {
+function get9Grid() {
+  return Array.from(document.querySelectorAll('.ninth'));
+}
+
+function getDragLayer() {
+  return Array.from(document.querySelectorAll('.rectangle-outer'))[1];
+}
+
+var isSwitching = false;
+
+function switchMode(targetElement, mode, checkbox) {
+  if(isSwitching) return;
+  var checked = checkbox.checked;
+
   switch(mode) {
     case "toggleOpacity":
       var changeset = {
@@ -26,22 +39,24 @@ function switchMode(mode, checked) {
         delayedProperty: !checked ? 'display' : 'opacity',
         property: checked ? 'display' : 'opacity'
       };
-        
-      var el = Array.from(document.querySelectorAll('.rectangle-outer'))[1];
-      var changeMode = (isChecked) => {
-        el.style[changeset.delayedProperty] = changeset[changeset.delayedProperty];
-      }
-
-      el.style[changeset.property] = changeset[changeset.property];
-
-      if(!checked)
-        setTimeout(changeMode, 500, checked)
-      else
-        setTimeout(changeMode, 0, checked)
-
     break;
-    }
   }
+
+  var switching = isSwitching = checkbox.disabled = true;
+  var el = targetElement;
+  var changeMode = (checkbox) => {
+    el.style[changeset.delayedProperty] = changeset[changeset.delayedProperty];
+    switching = isSwitching = checkbox.disabled = false;
+  }
+
+  el.style[changeset.property] = changeset[changeset.property];
+
+  if(!checked)
+    setTimeout(changeMode, 500, checkbox)
+  else
+    setTimeout(changeMode, 0, checkbox)
+
+}
 
 function moveRect() {
   if(rectDrags)
@@ -55,11 +70,13 @@ function moveRect() {
 
 window.addEventListener('load', function() {
   
-  document.getElementsByClassName('rectangle-outer')[1].addEventListener('mousemove', function(event) {
+  getDragLayer().addEventListener('mousemove', function(event) {
       moveRect();
   });
 
-  var ninth = Array.from(document.querySelectorAll('.ninth'));
+  switchMode(getDragLayer(), "toggleOpacity", false);
+
+  var ninth = get9Grid();
   for(var el in ninth) {
     ninth[el].addEventListener('mousemove', hl_color);
     ninth[el].addEventListener('mouseout', rm_color);

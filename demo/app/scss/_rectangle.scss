@@ -7,6 +7,8 @@
   top: 0;
 }
 .rectangle-outer:last-child {
+  opacity: 0;
+  display: none;
   transition: opacity 300ms;
 }
 div.highlight, div.centerMiddle {
