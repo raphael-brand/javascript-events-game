@@ -17,6 +17,16 @@ function stopDragRect(event) {
   rectDrags = false;
 }
 
+function switchMode(mode, checked) {
+  switch(mode) {
+    case "drag":
+      var displayMode;
+      checked ? displayMode = 1 : displayMode = 0;
+      Array.from(document.querySelectorAll('.rectangle-outer'))[1].style.opacity = displayMode;
+    break;
+  }
+}
+
 function moveRect() {
   if(rectDrags)
     target.style.backgroundColor = '#fa0';
@@ -26,13 +36,14 @@ function moveRect() {
   }
 }
 
-window.addEventListener('mousemove', function() {
-    moveRect();
-});
 
 window.addEventListener('load', function() {
-  var ninth = Array.from(document.querySelectorAll('.ninth'));
+  
+  document.getElementsByClassName('rectangle-outer')[1].addEventListener('mousemove', function(event) {
+      moveRect();
+  });
 
+  var ninth = Array.from(document.querySelectorAll('.ninth'));
   for(var el in ninth) {
     ninth[el].addEventListener('mousemove', hl_color);
     ninth[el].addEventListener('mouseout', rm_color);

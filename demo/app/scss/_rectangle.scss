@@ -6,6 +6,9 @@
   position: absolute;
   top: 0;
 }
+.rectangle-outer:last-child {
+  transition: opacity 300ms;
+}
 div.highlight, div.centerMiddle {
   background-color: $hl-color1;
 }

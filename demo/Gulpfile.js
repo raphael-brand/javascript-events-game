@@ -49,8 +49,6 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function () {
-  // return gulp.src(['bower_components/requirejs/require.js'])
-  //        .pipe(uglifyjs())
   return gulp.src([
     'app/js/test-module.js',
     'app/js/main.js']
@@ -62,7 +60,7 @@ gulp.task('js', function () {
 /**
  * Serve and watch the scss/pug files for changes
  */
-gulp.task('default', ['sass', 'templates'], function () {
+gulp.task('default', ['sass', 'templates', 'js'], function () {
 
   browserSync(bsConfig);
   gulp.watch('./app/js/*.js', ['js']);
