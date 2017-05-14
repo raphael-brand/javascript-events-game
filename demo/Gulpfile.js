@@ -62,7 +62,7 @@ gulp.task('js', function () {
 /**
  * Serve and watch the scss/pug files for changes
  */
-gulp.task('default', ['sass', 'templates'], function () {
+gulp.task('default', ['sass', 'templates', 'js'], function () {
 
   browserSync(bsConfig);
   gulp.watch('./app/js/*.js', ['js']);
