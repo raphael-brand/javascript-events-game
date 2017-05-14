@@ -7,3 +7,4 @@ demo/bower_components
 demo/dist/
 !demo
 node_modules/
+Gulpfile.js

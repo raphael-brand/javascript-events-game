@@ -29,3 +29,12 @@ function moveRect() {
 window.addEventListener('mousemove', function() {
     moveRect();
 });
+
+window.addEventListener('load', function() {
+  var ninth = Array.from(document.querySelectorAll('.ninth'));
+
+  for(var el in ninth) {
+    ninth[el].addEventListener('mousemove', hl_color);
+    ninth[el].addEventListener('mouseout', rm_color);
+  }
+})
