@@ -49,8 +49,6 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function () {
-  // return gulp.src(['bower_components/requirejs/require.js'])
-  //        .pipe(uglifyjs())
   return gulp.src([
     'app/js/test-module.js',
     'app/js/main.js']
