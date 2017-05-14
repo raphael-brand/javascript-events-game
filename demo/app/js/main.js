@@ -17,6 +17,16 @@ function stopDragRect(event) {
   rectDrags = false;
 }
 
+function switchMode(mode, checked) {
+  switch(mode) {
+    case "drag":
+      var displayMode;
+      checked ? displayMode = 1 : displayMode = 0;
+      Array.from(document.querySelectorAll('.rectangle-outer'))[1].style.opacity = displayMode;
+    break;
+  }
+}
+
 function moveRect() {
   if(rectDrags)
     target.style.backgroundColor = '#fa0';

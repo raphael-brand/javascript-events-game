@@ -19,11 +19,11 @@ html
                   else
                     .ninth.centerMiddle=''
               
-              //.rectangle-outer
+              .rectangle-outer(style='opacity:0')
                 .draggable.one Drag me
                 .draggable.two(draggable='true', ondrag='dragRect(event)', ondragover='stopDragRect(event)') Or me
 
             .col-md-4.col-lg-4.column Test 2
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas sapiente tempore nisi nemo nulla optio alias corporis libero non minus, dolorem expedita voluptatibus natus illo suscipit ab velit mollitia voluptates.
-              p Modi dolores quam ad inventore, consequuntur qui veniam totam! Sed totam minus sunt quos quaerat, distinctio aut nostrum fugiat sapiente ipsam voluptatum natus, maiores mollitia eum, neque itaque tenetur voluptate!
-              p Nihil libero labore aliquid, debitis amet officiis unde ab obcaecati omnis, beatae aperiam dignissimos non voluptatem sed corporis tenetur quasi iure esse quis. Numquam dignissimos cupiditate velit, id, praesentium accusantium!
+              .input-group
+                label(for='showDragLayer') Show Drag Layer
+                input(type='checkbox', id='showDragLayer', onchange='switchMode("drag", this.checked)')
