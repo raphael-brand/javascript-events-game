@@ -1,0 +1,49 @@
+@import '_colors';
+
+.rectangle-outer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.rectangle-outer:last-child {
+  opacity: 0;
+  display: none;
+  transition: opacity 300ms;
+}
+div.highlight, div.centerMiddle {
+  background-color: $hl-color1;
+  border: 5px solid transparent;
+  transition: border-color 500ms;
+}
+div.centerMiddle:hover {
+  border: 5px solid #fff;
+}
+/*.rectangle-inner {
+  margin: 65px auto;
+  margin-left: 0px;
+  width: calc(100% - 65px);
+  background-color: $bg-color1;
+  height: calc(80% - 65px);
+  position: relative;
+}
+*/
+.playfield {
+  postion: relative;
+  height: 650px;
+}
+.ninth {
+  width: 33.3%;
+  height: 33.3%;
+  position: relative;
+  display: inline-block;
+  background-color: $bg-color1;
+  border: 5px solid transparent;
+}
+.draggable.one,
+.draggable.two {
+  background-color: #efe;
+  width: 30%;
+  height: 30%;
+  position: relative;
+}

@@ -37,6 +37,14 @@ gulp.task('sass-bootstrap', function () {
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({ stream: true }));
 });
+
+gulp.task('js-vendor', function() {
+  return gulp.src([
+    'bower_components/requirejs/require.js'
+  ])
+  .pipe(gulp.dest('./dist/js'))
+  .pipe(reload({stream: true}));
+});
 /**
  * Sass task for live injecting into all browsers
  */
@@ -51,9 +59,10 @@ gulp.task('sass', function () {
 gulp.task('js', function () {
   return gulp.src([
     'app/js/test-module.js',
+    'app/js/rectangle.js',
     'app/js/main.js']
   )
-    .pipe(concat('main.js'))
+//    .pipe(concat('main.js'))
     .pipe(gulp.dest('./dist/js'))
     .pipe(reload({ stream: true }))
 });

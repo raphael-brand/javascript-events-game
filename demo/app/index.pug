@@ -5,8 +5,31 @@ html
         link(href='/css/main.css', rel='stylesheet')
         script(type='text/javascript', data-main='js/main', src='js/require.js')
     body
-        h1 Gulp, SASS + Pug Templates
-        p Your gulpfile provides some context for Pug:
-        ul
-          each val, index in locals
-            li= index + ': ' + val
+        .container
+          .row
+            h1.col-md-12.col-lg-12.column This is a test
+              
+          .row
+            .playfield.col-md-8.col-lg-8.column
+              .rectangle-outer
+
+                for val in [1,2,3,4,5,6,7,8,9]
+                  if val != 5
+                    .ninth=''
+                  else
+                    .ninth.centerMiddle=''
+
+
+              .rectangle-outer
+
+                .draggable.two(
+                  draggable='true',
+                  ondragstart='dragRect(event)',
+                  ondrag='onDrag(event)'
+                  ondragend='getRectangle(event)'
+                ) Drag me
+
+            .col-md-4.col-lg-4.column Test 2
+              .input-group
+                label(for='showDragLayer') Show Drag Layer
+                input(type='checkbox', id='showDragLayer', onchange='switchMode(getDragLayer(), "toggleOpacity", this)')
